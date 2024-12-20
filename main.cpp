@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+using namespace std;
 class Transactions{
     public:
     string type;
@@ -39,6 +39,7 @@ public:
         this->ph_num = ph_num;
         this->amount = amount;
         this->pin = pin;
+
 
         long getBalance() const
     {
@@ -146,10 +147,10 @@ public:
 }
 };
 
+    
 
 
     int main(){
-
 
 
 
