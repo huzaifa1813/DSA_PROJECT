@@ -3,6 +3,8 @@
 #include <iostream>
 #include<string>
 #include <queue>
+#include <unordered_map>
+#include <set>
 
 using namespace std;
 
@@ -26,7 +28,9 @@ public:
     long acc_num;
     string name;
     string address;
+    long long ph_num;
     long amount;
+    int pin;
     queue<Transactions> transactionHistory;
 
     Node() : acc_num(0), name(""), address(""), ph_num(0), amount(0), pin(0) {}
@@ -40,15 +44,42 @@ public:
         this->amount = amount;
         this->pin = pin;
 
-
+    };
         long getBalance() const
     {
         return amount;
     }
         
-    void performTransaction ( )
+    void performTransaction(unordered_map<long, Node *> &accountHash, set<long> &bst)
 {
-             
+    int maxAttempts = 3;
+    int enteredPin;
+
+    for (int attempt = 1; attempt <= maxAttempts; attempt++)
+    {
+        cout << "Enter your PIN (Attempt " << attempt << "/" << maxAttempts << "): ";
+        cin >> enteredPin;
+
+        // Check if entered PIN is correct
+        if (enteredPin == pin)
+        {
+            cout << "PIN verification successful. Proceeding with the transaction." << endl;
+            return;
+        }
+        else
+        {
+            cout << "Incorrect PIN. ";
+
+            if (attempt < maxAttempts)
+            {
+                cout << "Please try again." << endl;
+            }
+            else
+            {
+                cout << "Maximum attempts reached. Exiting program." << endl;
+                return;
+            }
+        }
     }
 
     int opt2;
