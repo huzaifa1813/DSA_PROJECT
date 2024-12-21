@@ -176,7 +176,42 @@ public:
         break;
     }
 }
+
+class BankingSystem
+{
+private:
+    list<Node> accountList;
+    unordered_map<long, Node *> accountHash;
+    set<long> bst;
+
+public:
+    // Function to add a new customer and open a new account
+    void addCustomer(long acc_num, string name, string address, long long ph_num, long amount, int pin)
+    {
+        Node *newNode = new Node(acc_num, name, address, ph_num, amount, pin);
+        accountList.push_front(*newNode);
+        accountHash[acc_num] = newNode;
+        bst.insert(acc_num);
+        cout << "\nCongratulations!!!\nYour Account has been created! \n"
+             << endl;
+    }
+
+    // Function to display account holder details
+    void displayCustomers()
+    {
+        int i = 1;
+        for (const auto &itr : accountList)
+        {
+            cout << "Client " << i << " Details" << endl;
+            cout << "Account Number -> " << itr.acc_num << endl;
+            cout << "Account Holder's Name -> " << itr.name << endl;
+            cout << "Account Holder's Address -> " << itr.address << endl;
+            cout << "Account Holder's Contact Information -> " << itr.ph_num << endl;
+            i++;
+        }
+    }
 };
+
 
     
 
