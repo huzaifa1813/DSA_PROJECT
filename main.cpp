@@ -36,3 +36,9 @@ public:
         this->amount = amount;
         this->pin = pin;
     };
+
+    int main(){
+
+
+        return 0;
+    }
