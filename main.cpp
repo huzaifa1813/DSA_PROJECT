@@ -22,9 +22,7 @@ public:
     long acc_num;
     string name;
     string address;
-    long long ph_num;
     long amount;
-    int pin;
     queue<Transactions> transactionHistory;
 
     Node() : acc_num(0), name(""), address(""), ph_num(0), amount(0), pin(0) {}
